@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#4468f2" />
+    <title>川师智发 H5</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="phone-frame">
+      <div id="app" class="app-shell">
+        <section id="authScreen" class="auth-screen" aria-label="登录注册">
+          <div class="auth-glow auth-glow-a"></div>
+          <div class="auth-glow auth-glow-b"></div>
+
+          <div class="brand-stack">
+            <div class="brand-mark">川</div>
+            <p class="eyebrow">四川省中小学教师专业发展</p>
+            <h1>川师智发</h1>
+            <p class="brand-copy">大模型与知识图谱驱动的教师成长支持平台</p>
+          </div>
+
+          <form id="loginForm" class="login-card">
+            <div class="auth-tabs" role="tablist" aria-label="登录方式">
+              <button class="auth-tab is-active" type="button" data-auth-mode="password">账号密码</button>
+              <button class="auth-tab" type="button" data-auth-mode="sms">手机验证码</button>
+            </div>
+
+            <div id="passwordFields" class="field-group">
+              <label>
+                <span>账号</span>
+                <input id="accountInput" autocomplete="username" value="abc" placeholder="请输入账号" />
+              </label>
+              <label>
+                <span>密码</span>
+                <input id="passwordInput" type="password" autocomplete="current-password" value="123456" placeholder="请输入密码" />
+              </label>
+            </div>
+
+            <div id="smsFields" class="field-group" hidden>
+              <label>
+                <span>手机号</span>
+                <input inputmode="tel" placeholder="请输入手机号" />
+              </label>
+              <label class="code-field">
+                <span>验证码</span>
+                <input inputmode="numeric" placeholder="请输入验证码" />
+                <button type="button" data-toast="验证码已发送">获取</button>
+              </label>
+            </div>
+
+            <div class="role-picker" aria-label="选择角色">
+              <p>选择体验角色</p>
+              <div class="role-grid">
+                <button class="role-chip is-active" type="button" data-role="teacher">普通教师</button>
+                <button class="role-chip" type="button" data-role="researcher">教研员</button>
+                <button class="role-chip" type="button" data-role="schoolAdmin">学校管理员</button>
+                <button class="role-chip" type="button" data-role="bureauAdmin">教育局管理员</button>
+              </div>
+            </div>
+
+            <label class="profile-toggle">
+              <input id="firstLoginInput" type="checkbox" checked />
+              <span>模拟首次登录，引导完善学段、学科、教龄、职称</span>
+            </label>
+
+            <button class="primary-action" type="submit">进入平台</button>
+            <p class="login-note">测试账号来自产品文档：abc / 123456</p>
+          </form>
+        </section>
+
+        <section id="mainApp" class="main-app" hidden>
+          <header class="app-header">
+            <div class="status-line">
+              <div>
+                <p id="headerEyebrow" class="eyebrow">今日成长看板</p>
+                <h2 id="headerTitle">AI 助手</h2>
+              </div>
+              <button id="roleBadge" class="role-badge" type="button" data-nav="profile">普通教师</button>
+            </div>
+            <div class="top-tabs" aria-label="顶部导航">
+              <button class="top-tab is-active" type="button" data-nav="assistant">AI助手</button>
+              <button class="top-tab" type="button" data-nav="knowledge">知识库</button>
+              <button class="top-tab" type="button" data-nav="tools">AI工具集市</button>
+            </div>
+          </header>
+
+          <main id="screen" class="screen" tabindex="-1"></main>
+
+          <nav class="bottom-nav" aria-label="底部导航">
+            <button class="bottom-nav-item is-active" type="button" data-nav="assistant">
+              <span>首页</span>
+            </button>
+            <button class="bottom-nav-item" type="button" data-nav="knowledge">
+              <span>知识库</span>
+            </button>
+            <button class="bottom-nav-item" type="button" data-nav="tools">
+              <span>工具集市</span>
+            </button>
+            <button class="bottom-nav-item" type="button" data-nav="profile">
+              <span>个人中心</span>
+            </button>
+          </nav>
+        </section>
+
+        <div id="sheet" class="sheet" hidden>
+          <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+            <div class="sheet-handle"></div>
+            <div class="sheet-head">
+              <div>
+                <p id="sheetKicker" class="eyebrow">功能详情</p>
+                <h3 id="sheetTitle">标题</h3>
+              </div>
+              <button id="sheetClose" class="ghost-button" type="button">关闭</button>
+            </div>
+            <div id="sheetBody" class="sheet-body"></div>
+          </div>
+        </div>
+
+        <div id="toast" class="toast" hidden></div>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
